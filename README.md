@@ -11,8 +11,8 @@ original repo: https://github.com/MT-Scripts/mt-hud
 - HUD components hiding when filled
 - Car HUD with vehicle speed, closest streets, direction, gear and fuel
 - Voice HUD with range and changing color when talking
-- Dinamic minimap based on player resolution
-- Border at minimap and changed minimap shape
+
+
 
 # Dependicies
 - qb-core
