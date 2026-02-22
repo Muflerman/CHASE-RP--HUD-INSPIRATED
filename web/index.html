@@ -1,0 +1,176 @@
+<html>
+
+<head>
+    <title>Chase HUD</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <svg class="svg-defs" aria-hidden="true" focusable="false">
+        <defs>
+            <linearGradient id="gradient-voice" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="100%" stop-color="#b1b1b1" />
+            </linearGradient>
+            <linearGradient id="gradient-talking" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f1c40f" />
+                <stop offset="100%" stop-color="#f39c12" />
+            </linearGradient>
+            <linearGradient id="gradient-health" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff4d4d" />
+                <stop offset="100%" stop-color="#ff9f9f" />
+            </linearGradient>
+            <linearGradient id="gradient-armor" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b82f6" />
+                <stop offset="100%" stop-color="#93c5fd" />
+            </linearGradient>
+            <linearGradient id="gradient-hunger" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#22c55e" />
+                <stop offset="100%" stop-color="#86efac" />
+            </linearGradient>
+            <linearGradient id="gradient-thirst" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#67e8f9" />
+            </linearGradient>
+            <linearGradient id="gradient-stamina" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f43f5e" />
+                <stop offset="100%" stop-color="#fda4af" />
+            </linearGradient>
+            <linearGradient id="gradient-oxygen" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00d2ff" />
+                <stop offset="100%" stop-color="#3a7bd5" />
+            </linearGradient>
+            <linearGradient id="gradient-rpm" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffb3c1" />
+                <stop offset="100%" stop-color="#ff4d6d" />
+            </linearGradient>
+            <linearGradient id="gradient-rpm-redline" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff4d6d" />
+                <stop offset="100%" stop-color="#c9184a" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <div id="player-hud-container">
+        <div id="voice-container" class="hud-field">
+            <svg class="hud-svg" viewBox="0 0 50 50">
+                <polygon class="pentagon-bg" points="25,5 44,19 37,41 13,41 6,19" />
+                <polygon id="voice-progress" class="pentagon-progress voice" points="25,5 44,19 37,41 13,41 6,19" />
+            </svg>
+            <i class='fas fa-microphone hud-icon'></i>
+        </div>
+        <div id="health-container" class="hud-field">
+            <svg class="hud-svg" viewBox="0 0 50 50">
+                <polygon class="pentagon-bg" points="25,5 44,19 37,41 13,41 6,19" />
+                <polygon id="health-progress" class="pentagon-progress health" points="25,5 44,19 37,41 13,41 6,19" />
+            </svg>
+            <i class='fas fa-heart hud-icon'></i>
+        </div>
+        <div id="armor-container" class="hud-field">
+            <svg class="hud-svg" viewBox="0 0 50 50">
+                <polygon class="pentagon-bg" points="25,5 44,19 37,41 13,41 6,19" />
+                <polygon id="armor-progress" class="pentagon-progress armor" points="25,5 44,19 37,41 13,41 6,19" />
+            </svg>
+            <i class='fas fa-shield-alt hud-icon'></i>
+        </div>
+        <div id="hunger-container" class="hud-field">
+            <svg class="hud-svg" viewBox="0 0 50 50">
+                <polygon class="pentagon-bg" points="25,5 44,19 37,41 13,41 6,19" />
+                <polygon id="hunger-progress" class="pentagon-progress hunger" points="25,5 44,19 37,41 13,41 6,19" />
+            </svg>
+            <i class='fas fa-burger hud-icon'></i>
+        </div>
+        <div id="thirst-container" class="hud-field">
+            <svg class="hud-svg" viewBox="0 0 50 50">
+                <polygon class="pentagon-bg" points="25,5 44,19 37,41 13,41 6,19" />
+                <polygon id="thirst-progress" class="pentagon-progress thirst" points="25,5 44,19 37,41 13,41 6,19" />
+            </svg>
+            <i class='fas fa-droplet hud-icon'></i>
+        </div>
+        <div id="stamina-container" class="hud-field">
+            <svg class="hud-svg" viewBox="0 0 50 50">
+                <polygon class="pentagon-bg" points="25,5 44,19 37,41 13,41 6,19" />
+                <polygon id="stamina-progress" class="pentagon-progress stamina" points="25,5 44,19 37,41 13,41 6,19" />
+            </svg>
+            <i class='fas fa-running hud-icon'></i>
+        </div>
+        <div id="oxygen-container" class="hud-field">
+            <svg class="hud-svg" viewBox="0 0 50 50">
+                <polygon class="pentagon-bg" points="25,5 44,19 37,41 13,41 6,19" />
+                <polygon id="oxygen-progress" class="pentagon-progress oxygen" points="25,5 44,19 37,41 13,41 6,19" />
+            </svg>
+            <i class='fas fa-lungs hud-icon'></i>
+        </div>
+    </div>
+    <div id="vehicle-hud-container">
+        <div id="speed-container">
+            <svg class="speed-svg" viewBox="0 0 100 100">
+                <circle class="speed-bg" cx="50" cy="50" r="45" />
+                <circle id="speed-progress" class="speed-bar" cx="50" cy="50" r="45" />
+                <path class="speed-ticks-major" d="M 95 50 A 45 45 0 1 1 50 5" />
+                <path class="speed-ticks-minor" d="M 95 50 A 45 45 0 1 1 50 5" />
+            </svg>
+            <div class="speed-info">
+                <div id="speed">00</div>
+                <div id="speed-unit">km/h</div>
+            </div>
+        </div>
+
+        <div id="vehicle-status-icons">
+            <div id="seatbelt-icon" class="v-icon disabled"><i class="fas fa-user-slash"></i></div>
+            <div id="lock-icon" class="v-icon locked"><i class="fas fa-lock"></i></div>
+        </div>
+
+        <div id="fuel-container">
+            <svg class="fuel-svg" viewBox="0 0 100 100">
+                <path class="fuel-bg" d="M 50 10 A 40 40 0 0 0 50 90" />
+                <path id="fuel-progress" class="fuel-bar" d="M 50 10 A 40 40 0 0 0 50 90" />
+            </svg>
+            <i class="fas fa-gas-pump fuel-icon"></i>
+        </div>
+
+        <div id="gear-container">
+            <i class="fas fa-microchip"></i>
+            <span id="gear">1</span>
+        </div>
+    </div>
+
+    <div id="compass-container">
+        <div id="compass">
+            <div class="compass-bar">
+                <span class="point">NW</span>
+                <span class="point-small">|</span>
+                <span class="point">N</span>
+                <span class="point-small">|</span>
+                <span class="point">NE</span>
+                <span class="point-small">|</span>
+                <span class="point">E</span>
+                <span class="point-small">|</span>
+                <span class="point">SE</span>
+                <span class="point-small">|</span>
+                <span class="point">S</span>
+                <span class="point-small">|</span>
+                <span class="point">SW</span>
+                <span class="point-small">|</span>
+                <span class="point">W</span>
+                <span class="point-small">|</span>
+                <span class="point">NW</span>
+                <span class="point-small">|</span>
+                <span class="point">N</span>
+                <span class="point-small">|</span>
+                <span class="point">NE</span>
+            </div>
+        </div>
+        <div class="compass-marker"></div>
+        <div id="street-container">
+            <div id="street1">Cargando calle...</div>
+            <div id="street2"></div>
+        </div>
+    </div>
+</body>
+
+</html>

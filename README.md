@@ -1,11 +1,9 @@
-# CHASE-RP--HUD-INSPIRATED
-"It's a resource inspired by Chase RP using MT-hud, so almost all the credit goes to MT-scripts for their phenomenal HUD."
 # Chase HUD
 The worst FiveM HUD ever made
 
 # Preview
-![27fe2d3ff883c6226a48974bbd54de0f](https://github.com/user-attachments/assets/d64f1945-cb40-4c97-8604-e31b9e1fc199)
-
+![Captura de ecrã 2023-12-22 213304](https://github.com/MT-Scripts/mt-hud/assets/89866234/51405f05-1b4a-42e0-93e7-43185634cd67)
+![Captura de ecrã 2023-12-22 213512](https://github.com/MT-Scripts/mt-hud/assets/89866234/f2461b50-e5ca-4706-99a3-0159e08f9e7d)
 
 # Features
 - Status HUD with health, armor, hunger, thirst and stamina
